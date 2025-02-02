@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "884674213247",
+    "project_id": "my-firebase-b9699",
+    "storage_bucket": "my-firebase-b9699.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:884674213247:android:70cd3bb19dc5a2155dd64a",
+        "android_client_info": {
+          "package_name": "com.example.deshi_mart"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBA9u5J3jxEd96SrNRPdDusgO2fjDGBOxQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
