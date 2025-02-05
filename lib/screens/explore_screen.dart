@@ -1,4 +1,4 @@
-import 'package:deshi_mart/customs/data.dart';
+import 'package:deshi_mart/customs/categories.dart';
 import 'package:flutter/material.dart';
 
 class ExploreScreen extends StatelessWidget {
@@ -34,6 +34,9 @@ class ExploreScreen extends StatelessWidget {
                   Color.fromRGBO(211, 176, 224, 0.25),
                   Color.fromRGBO(253, 229, 152, 0.25),
                   Color.fromRGBO(183, 223, 245, 0.25),
+                  Color.fromRGBO(83, 177, 117, 0.1),
+                  Color.fromRGBO(248, 164, 76, 0.1),
+                  Color.fromRGBO(247, 165, 147, 0.25),
                 ];
 
                 Color fillColor = colors[index % colors.length];

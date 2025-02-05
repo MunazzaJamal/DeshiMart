@@ -1,4 +1,4 @@
-import 'package:deshi_mart/customs/data.dart';
+import 'package:deshi_mart/customs/categories.dart';
 import 'package:deshi_mart/customs/utils.dart';
 import 'package:deshi_mart/customs/widgets.dart';
 import 'package:flutter/material.dart';
@@ -10,8 +10,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
-          child: Column(
-                  children: [
+      child: Column(
+        children: [
           Padding(
             padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
             child: Row(
@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
           SizedBox(
             height: 15,
           ),
-          
+
           customTile(
             data,
           ),
@@ -58,7 +58,7 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
-          customTile2(fruits),
+          customTile2(exclusive),
           Padding(
             padding:
                 const EdgeInsets.only(left: 20, right: 20, top: 7, bottom: 7),
@@ -80,10 +80,10 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
-          
-          customTile2(vegetables),
-                  ],
-                ),
-        ));
+
+          customTile2(best),
+        ],
+      ),
+    ));
   }
 }

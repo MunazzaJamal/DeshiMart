@@ -1,48 +1,3 @@
-List data = [
-  {
-    'cat': 'Fresh Vegetables',
-    'img': 'assets/images/img1.jpg',
-  },
-  {
-    'cat': 'Fruits',
-    'img': 'assets/images/img2.jpg',
-  },
-  {
-    'cat': 'Spices',
-    'img': 'assets/images/img3.jpg',
-  },
-];
-
-
-List categories = [
-  {
-    'cat': 'Fresh Fruits & Vegetables',
-    'img': 'assets/images/I1.png',
-  },
-  {
-    'cat': 'Cooking Oil & Ghee',
-    'img': 'assets/images/I2.png',
-  },
-  {
-    'cat': 'Meat & Fish',
-    'img': 'assets/images/I3.png',
-  },
-
-  {
-    'cat': 'Bakery & Snacks',
-    'img': 'assets/images/I4.png',
-  },
-  {
-'cat': 'Dairy & Eggs',
-    'img': 'assets/images/I5.png',
-  },
-  {
-    'cat': 'Beverages',
-    'img': 'assets/images/I6.png',
-  }
-
-];
-
 List fruits = [
   {
     'name': 'Organic Bananas',
@@ -168,3 +123,4 @@ List vegetables = [
         'Colorful and crunchy, these bell peppers are perfect for salads and cooking. Highly rated!',
   },
 ];
+
