@@ -1,105 +1,136 @@
+import 'package:deshi_mart/controllers/cart_controller.dart';
 import 'package:deshi_mart/customs/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CartScreen extends StatelessWidget {
-  const CartScreen({super.key});
-
+  CartScreen({super.key});
+  final CartController _cartController = Get.put(CartController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Center(
-            child: Text(
-          'My Cart',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-        )),
-      ),
-      body: cartTile(),
-    );
-  }
-
-  Widget cartTile() {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Container(
-        height: 155,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey),
-          borderRadius: BorderRadius.all(Radius.circular(20)),
+        appBar: AppBar(
+          title: Center(
+              child: Text(
+            'My Cart',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          )),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Stack(
-            children: [
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Image.asset(
-                    'assets/images/img1.jpg',
-                    width: 70,
-                    height: 65,
-                  ),
-                  SizedBox(width: 30),
-                  Column(
-                    children: [
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        'Data',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(height: 2),
-                      Text(
-                        'subData',
-                        style: TextStyle(fontSize: 14, color: Colors.grey),
-                      ),
-                      SizedBox(
-                          width: 150,
-                          height: 80,
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                IconButton(
-                                    onPressed: () {},
-                                    icon: const Icon(Icons.remove,
-                                        color: AppColors.secondaryColor)),
-                                Container(
-                                  height: 40,
-                                  width: 40,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey),
-                                    borderRadius: BorderRadius.circular(15),
+        body: GetBuilder<CartController>(builder: (context) {
+          return ListView.builder(
+              shrinkWrap: true,
+              itemCount: _cartController.cartprod.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Container(
+                    height: 155,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey),
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Stack(
+                        children: [
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Image.asset(
+                                _cartController.cartprod[index]['img'],
+                                width: 70,
+                                height: 65,
+                              ),
+                              SizedBox(width: 30),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  // SizedBox(
+                                  //   height: 5,
+                                  // ),
+                                  Text(
+                                    _cartController.cartprod[index]['name'],
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold),
                                   ),
-                                  child: Center(
-                                      child: Text(
-                                    '1',
-                                    style: TextStyle(fontSize: 20),
-                                  )),
-                                ),
-                                IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(Icons.add,
-                                        color: AppColors.secondaryColor)),
-                              ])),
-                    ],
+                                  SizedBox(height: 2),
+                                  Text(
+                                    _cartController.cartprod[index]['subtitle'],
+                                    style: TextStyle(
+                                        fontSize: 14, color: Colors.grey),
+                                  ),
+                                  SizedBox(
+                                      width: 150,
+                                      height: 80,
+                                      child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            IconButton(
+                                                onPressed: () {
+                                                  _cartController
+                                                      .decrementQuantity(index);
+                                                },
+                                                icon: const Icon(Icons.remove,
+                                                    color: AppColors
+                                                        .secondaryColor)),
+                                            Container(
+                                              height: 40,
+                                              width: 40,
+                                              decoration: BoxDecoration(
+                                                border: Border.all(
+                                                    color: Colors.grey),
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                              ),
+                                              child: Center(
+                                                  child: Text(
+                                                _cartController.cartprod[index]
+                                                        ['quantity']
+                                                    .toString(),
+                                                style: TextStyle(fontSize: 20),
+                                              )),
+                                            ),
+                                            IconButton(
+                                                onPressed: () {
+                                                  _cartController
+                                                      .incrementQuantity(index);
+                                                },
+                                                icon: Icon(Icons.add,
+                                                    color: AppColors
+                                                        .secondaryColor)),
+                                          ])),
+                                ],
+                              ),
+                            ],
+                          ),
+                          Positioned(
+                            right: 15,
+                            top: 15,
+                            child: Icon(
+                              Icons.delete,
+                              color: AppColors.secondaryColor,
+                            ),
+                          ),
+                          Positioned(
+                            right: 15,
+                            top: 75,
+                            child: Text(
+                              '\$${_cartController.cartprod[index]['price']}',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 18),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                ],
-              ),
-              Positioned(
-                right: 15,
-                top: 15,
-                child: Icon(
-                  Icons.delete,
-                  color: AppColors.secondaryColor,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+                );
+                ;
+              });
+        }));
   }
 }

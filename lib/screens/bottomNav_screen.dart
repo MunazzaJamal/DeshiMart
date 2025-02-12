@@ -2,6 +2,7 @@
 //Bottom navigation is a part of
 
 import 'package:deshi_mart/customs/utils.dart';
+import 'package:deshi_mart/screens/cart_screen.dart';
 import 'package:deshi_mart/screens/explore_screen.dart';
 import 'package:deshi_mart/screens/favorites_screen.dart';
 import 'package:deshi_mart/screens/home_screen.dart';
@@ -10,8 +11,6 @@ import 'package:flutter/material.dart';
 
 import 'package:crystal_navigation_bar/crystal_navigation_bar.dart';
 import 'package:iconly/iconly.dart';
-
-import 'cart_screen.dart';
 
 enum _SelectedTab { Shop, Explore, Cart, Favorite, Profile }
 

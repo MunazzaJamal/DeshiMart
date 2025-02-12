@@ -1,12 +1,14 @@
+import 'package:deshi_mart/controllers/cart_controller.dart';
 import 'package:deshi_mart/customs/expand.dart';
 import 'package:deshi_mart/customs/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   final Map<String, dynamic> product;
-  const ProductDetailScreen({super.key, required this.product});
-
+  ProductDetailScreen({super.key, required this.product});
+  CartController _cartController = Get.put(CartController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -140,7 +142,9 @@ class ProductDetailScreen extends StatelessWidget {
                   height: 50,
                   width: 300,
                   child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        _cartController.cartAdd(product);
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.greenColor,
                       ),

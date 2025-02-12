@@ -54,6 +54,7 @@ List exclusive = [
     'subtitle': '1kg Priceg',
     'img': 'assets/images/v4.jpg',
     'price': 2.49,
+    'quantity': 1, // Added quantity
     'description':
         'This cauliflower is fresh and versatile, perfect for a variety of dishes. Each pack contains 1kg of cauliflower.',
     'nutrition':
@@ -66,6 +67,7 @@ List exclusive = [
     'subtitle': '500g Priceg',
     'img': 'assets/images/v5.jpg',
     'price': 2.99,
+    'quantity': 1, // Added quantity
     'description':
         'These bell peppers are fresh and colorful, perfect for salads or cooking. Each pack contains 500g of bell peppers.',
     'nutrition':
@@ -78,6 +80,7 @@ List exclusive = [
     'subtitle': '1kg Priceg',
     'img': 'assets/images/f4.jpg',
     'price': 3.99,
+    'quantity': 1, // Added quantity
     'description':
         'These oranges are fresh and full of vitamin C, perfect for a healthy and refreshing snack. Each pack contains 1kg of oranges.',
     'nutrition':
@@ -90,6 +93,7 @@ List exclusive = [
     'subtitle': '1kg Priceg',
     'img': 'assets/images/f5.jpg',
     'price': 6.99,
+    'quantity': 1, // Added quantity
     'description':
         'These mangoes are ripe and sweet, perfect for a tropical treat. Each pack contains 1kg of mangoes.',
     'nutrition':
@@ -98,13 +102,13 @@ List exclusive = [
         'Ripe and sweet, these mangoes are a tropical delight. Highly recommended!',
   },
 ];
-
 List best = [
   {
     'name': 'Red Apples',
     'subtitle': '1kg Priceg',
     'img': 'assets/images/f2.jpg',
     'price': 4.99,
+    'quantity': 1, // Added quantity
     'description':
         'These red apples are crisp and juicy, perfect for a refreshing snack. Each pack contains 1kg of apples.',
     'nutrition':
@@ -117,6 +121,7 @@ List best = [
     'subtitle': '500g Priceg',
     'img': 'assets/images/f3.jpg',
     'price': 5.99,
+    'quantity': 1, // Added quantity
     'description':
         'These green grapes are sweet and juicy, ideal for a quick and healthy treat. Each pack contains 500g of grapes.',
     'nutrition':
@@ -129,6 +134,7 @@ List best = [
     'subtitle': '500g Priceg',
     'img': 'assets/images/v1.jpg',
     'price': 2.99,
+    'quantity': 1, // Added quantity
     'description':
         'These organic carrots are freshly harvested and come in a pack of 500g. They are perfect for a healthy snack or cooking.',
     'nutrition':
@@ -141,6 +147,7 @@ List best = [
     'subtitle': '1kg Priceg',
     'img': 'assets/images/v2.jpg',
     'price': 3.49,
+    'quantity': 1, // Added quantity
     'description':
         'This broccoli is fresh and full of nutrients, perfect for a healthy meal. Each pack contains 1kg of broccoli.',
     'nutrition':

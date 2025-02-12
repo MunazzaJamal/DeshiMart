@@ -1,4 +1,4 @@
-List fruits = [
+List<Map<String, dynamic>> fruits = [
   {
     'name': 'Organic Bananas',
     'subtitle': '7pcs, Priceg',
@@ -10,6 +10,7 @@ List fruits = [
         'Rich in potassium, vitamin C, and dietary fiber. Supports heart health and aids digestion.',
     'reviews':
         'Customers love the fresh taste and convenience of these organic bananas. Highly recommended!',
+    'quantity': 1,
   },
   {
     'name': 'Red Apples',
@@ -22,6 +23,7 @@ List fruits = [
         'High in fiber and vitamin C. Boosts immune system and promotes healthy digestion.',
     'reviews':
         'Crisp and delicious, these apples are a favorite among customers. Great for snacking!',
+    'quantity': 1,
   },
   {
     'name': 'Green Grapes',
@@ -34,6 +36,7 @@ List fruits = [
         'Loaded with antioxidants and vitamin K. Supports heart health and bone strength.',
     'reviews':
         'Sweet and refreshing, these green grapes are perfect for a quick snack. Highly rated!',
+    'quantity': 1,
   },
   {
     'name': 'Oranges',
@@ -46,6 +49,7 @@ List fruits = [
         'High in vitamin C and fiber. Boosts immunity and supports healthy skin.',
     'reviews':
         'Juicy and delicious, these oranges are a great source of vitamin C. Loved by customers!',
+    'quantity': 1,
   },
   {
     'name': 'Mangoes',
@@ -58,10 +62,11 @@ List fruits = [
         'Rich in vitamins A and C. Promotes healthy skin and a strong immune system.',
     'reviews':
         'Ripe and sweet, these mangoes are a tropical delight. Highly recommended!',
+    'quantity': 1,
   },
 ];
 
-List vegetables = [
+List<Map<dynamic, dynamic>> vegetables = [
   {
     'name': 'Organic Carrots',
     'subtitle': '500g Priceg',
@@ -73,6 +78,7 @@ List vegetables = [
         'High in vitamin A and fiber. Supports eye health and aids digestion.',
     'reviews':
         'Fresh and crunchy, these carrots are great for snacking and cooking. Highly rated!',
+    'quantity': 1,
   },
   {
     'name': 'Broccoli',
@@ -85,6 +91,7 @@ List vegetables = [
         'Loaded with vitamins C and K. Supports immune health and bone strength.',
     'reviews':
         'Nutritious and versatile, this broccoli is perfect for a variety of dishes. Loved by customers!',
+    'quantity': 1,
   },
   {
     'name': 'Spinach',
@@ -97,6 +104,7 @@ List vegetables = [
         'High in iron and vitamins. Supports healthy blood and strong bones.',
     'reviews':
         'Fresh and flavorful, this spinach is perfect for salads and cooking. Highly recommended!',
+    'quantity': 1,
   },
   {
     'name': 'Cauliflower',
@@ -109,6 +117,7 @@ List vegetables = [
         'Rich in vitamins C and K. Supports immune health and bone strength.',
     'reviews':
         'Versatile and nutritious, this cauliflower is perfect for a variety of dishes. Loved by customers!',
+    'quantity': 1,
   },
   {
     'name': 'Bell Peppers',
@@ -121,6 +130,6 @@ List vegetables = [
         'High in vitamin C and antioxidants. Supports immune health and reduces inflammation.',
     'reviews':
         'Colorful and crunchy, these bell peppers are perfect for salads and cooking. Highly rated!',
+    'quantity': 1,
   },
 ];
-
