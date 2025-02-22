@@ -22,7 +22,7 @@ class ExploreScreen extends StatelessWidget {
                 crossAxisCount: 2, // Number of items in a row
                 crossAxisSpacing: 10, // Spacing between columns
                 mainAxisSpacing: 10, // Spacing between rows
-                childAspectRatio: 1, // Aspect ratio of each item
+                childAspectRatio: 0.8, // Aspect ratio of each item
               ),
               itemCount: categories.length,
               itemBuilder: (context, index) {
@@ -46,6 +46,7 @@ class ExploreScreen extends StatelessWidget {
                     print('Pressed $index');
                   },
                   child: Container(
+                   
                     decoration: BoxDecoration(
                       color: fillColor, // Set the background color
                       borderRadius: BorderRadius.circular(15),

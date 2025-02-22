@@ -14,11 +14,14 @@ class HomeScreen extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
+            padding: const EdgeInsets.only(top: 40, left: 15, right: 15),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Image.asset('assets/icons/icon6.png'),
+                SizedBox(
+                    height: 50,
+                    width: 50,
+                    child: Image.asset('assets/icons/icon6.png')),
                 Text(
                   'Welcome',
                   style: TextStyle(
@@ -49,7 +52,7 @@ class HomeScreen extends StatelessWidget {
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 InkWell(
-                  onTap: () => customDialog(),
+                  onTap: () => showCheckoutModal(),
                   child: Text(
                     'See more',
                     style: TextStyle(

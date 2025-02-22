@@ -19,7 +19,7 @@ Widget customTile(data) {
             padding: const EdgeInsets.all(15.0),
             child: Container(
               height: 200,
-              width: 400,
+              width: 300,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
@@ -144,4 +144,8 @@ Widget customTile2(data) {
               ));
         }),
   );
+}
+
+Widget orderdialog() {
+  return Container();
 }

@@ -41,8 +41,9 @@ class CartController extends GetxController {
   void DecrementCart(index) {
     if (cartprod[index]['quantity'] > 1) {
       cartprod[index]['quantity']--;
-    } else
+    } else {
       removeFromCart(cartprod[index]);
+    }
     update();
   }
 
@@ -60,10 +61,12 @@ class CartController extends GetxController {
 
           update();
           break;
-        } else
+        } else {
           removeFromCart(product);
-      } else
+        }
+      } else {
         print('else cond');
+      }
       removeFromCart(product);
     }
 //    }
