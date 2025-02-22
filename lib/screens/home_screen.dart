@@ -1,4 +1,5 @@
 import 'package:deshi_mart/customs/categories.dart';
+import 'package:deshi_mart/customs/order_failed_widget.dart';
 import 'package:deshi_mart/customs/utils.dart';
 import 'package:deshi_mart/customs/widgets.dart';
 import 'package:deshi_mart/screens/checkout_screen.dart';
@@ -52,7 +53,7 @@ class HomeScreen extends StatelessWidget {
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 InkWell(
-                  onTap: () => showCheckoutModal(),
+                  onTap: () {},
                   child: Text(
                     'See more',
                     style: TextStyle(

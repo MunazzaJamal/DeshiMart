@@ -1,9 +1,11 @@
 import 'package:get/get.dart';
 
 class CheckoutController extends GetxController {
-  var deliveryMethod = 'Select Method'.obs;
-  var paymentMethod = 'Select Method'.obs;
+  var deliveryMethod = ''.obs;
+  var paymentMethod = ''.obs;
   var promoCode = ''.obs;
+  var chk = false.obs;
+  var cartPrice = 0.0.obs; // Observable cart price
 
   // List of available delivery methods
   final List<String> deliveryMethods = [
@@ -25,6 +27,21 @@ class CheckoutController extends GetxController {
     'Code 30%',
     'Code 40%',
   ];
+
+  bool placeOrder() {
+    if (deliveryMethod.value.isNotEmpty && paymentMethod.value.isNotEmpty) {
+      chk.value = true;
+      print('Delivery and Payment methods selected');
+    } else {
+      chk.value = false;
+      print('2nd');
+      print('Delivery or Payment method not selected');
+    }
+    print(deliveryMethod.value);
+    print(paymentMethod.value);
+    return chk.value;
+  }
+
   // Function to update the selected method
   void deliverymethod(String method) {
     deliveryMethod.value = method;
@@ -36,6 +53,7 @@ class CheckoutController extends GetxController {
 
   void promocodemethod(String code) {
     promoCode.value = code;
+    print(promoCode.value);
   }
 
   final Map<String, double> promoCodeDiscounts = {
@@ -53,31 +71,14 @@ class CheckoutController extends GetxController {
     if (promoCode != null && promoCodeDiscounts.containsKey(promoCode)) {
       double discountMultiplier = promoCodeDiscounts[promoCode]!;
       print('${(1 - discountMultiplier) * 100}% discount applied');
+      print(cartPrice * discountMultiplier);
       return cartPrice * discountMultiplier;
     } else if (promoCode != null) {
       print('Invalid promo code: $promoCode');
+      return cartPrice;
     } else {
       print('No promo code applied');
+      return cartPrice;
     }
-    return cartPrice;
   }
-
-  // double totalprice(double cartPrice) {
-  //   if (promoCode.value == 'Code 15%') {
-  //     print('15% discount');
-  //     return cartPrice * 0.85;
-  //   } else if (promoCode.value == 'Code 20%') {
-  //     print('20% discount');
-  //     return cartPrice * 0.80;
-  //   } else if (promoCode.value == 'Code 30%') {
-  //     print('30% discount');
-  //     return cartPrice * 0.70;
-  //   } else if (promoCode.value == 'Code 40%') {
-  //     print('40% discount');
-  //     return cartPrice * 0.60;
-  //   } else {
-  //     print('No discount');
-  //     return cartPrice;
-  //   }
-  // }
 }

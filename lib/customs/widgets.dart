@@ -146,6 +146,3 @@ Widget customTile2(data) {
   );
 }
 
-Widget orderdialog() {
-  return Container();
-}

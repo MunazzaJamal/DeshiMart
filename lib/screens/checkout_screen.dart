@@ -2,54 +2,15 @@ import 'dart:ui';
 
 import 'package:deshi_mart/controllers/cart_controller.dart';
 import 'package:deshi_mart/controllers/checkout_controller.dart';
+import 'package:deshi_mart/customs/order_failed_widget.dart';
+import 'package:deshi_mart/customs/order_success_widget.dart';
 import 'package:deshi_mart/customs/utils.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
-// customDialog() {
-//   Get.dialog(
-//       barrierDismissible: false,
-//       Dialog(
-//         backgroundColor: Colors.white,
-//         child: PopScope(
-//           canPop: true,
-//           child: Container(
-//             width: 300, height: 200,
-//             padding: EdgeInsets.all(10),
-//             decoration: BoxDecoration(
-//                 color: Colors.white, borderRadius: BorderRadius.circular(20)),
-//             child: Column(
-//               mainAxisSize: MainAxisSize.min,
-//               crossAxisAlignment: CrossAxisAlignment.center,
-//               children: [
-//                 Row(
-//                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                   children: [
-//                   Text('CheckOut', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
-//                   IconButton(onPressed: (){}, icon: Icon(IconlyLight.close_square), color: Colors.grey,)
-//                 ],)
-//                , Divider(color: Colors.grey,),
-//                Row(
-//                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                   children: [
-//                   Text('Delivery', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
 
-//                 ],)
-//               ],
-//             ),
-//           ),
-//         ),
-//       ));
-// }
-
-// class CheckoutScreen extends StatelessWidget {
-//   CheckoutScreen({super.key});
 final CartController cartController = Get.put(CartController());
 final CheckoutController _checkoutController = Get.put(CheckoutController());
-// @override
-// Widget build(BuildContext context) {
-//   return showCheckoutModal();
-// }
 
 showCheckoutModal() {
   Get.bottomSheet(
@@ -95,9 +56,9 @@ showCheckoutModal() {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Delivery',
+                              'Select Delivery Method',
                               style: TextStyle(
-                                  fontSize: 20,
+                                  fontSize: 18,
                                   color: Colors.grey,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -129,9 +90,9 @@ showCheckoutModal() {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Payment',
+                              'Select Payment Method',
                               style: TextStyle(
-                                  fontSize: 20,
+                                  fontSize: 18,
                                   color: Colors.grey,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -162,9 +123,9 @@ showCheckoutModal() {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Promo Code',
+                              'Enter Promo Code',
                               style: TextStyle(
-                                  fontSize: 20,
+                                  fontSize: 18,
                                   color: Colors.grey,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -195,15 +156,18 @@ showCheckoutModal() {
                                   color: Colors.grey,
                                   fontWeight: FontWeight.bold),
                             ),
-                            Text(
-                              _checkoutController
-                                  .totalPrice(cartController.orderTotal(),
-                                      _checkoutController.promoCode.value)
-                                  .toStringAsFixed(2),
-                              style: TextStyle(fontSize: 18),
-                            ),
+                            Obx(
+                              () => Text(
+                                '\$' +
+                                    _checkoutController
+                                        .totalPrice(cartController.orderTotal(),
+                                            _checkoutController.promoCode.value)
+                                        .toStringAsFixed(2),
+                                style: TextStyle(fontSize: 18),
+                              ),
+                            )
                           ]),
-                      SizedBox(height: 15),
+                      SizedBox(height: 18),
                       Divider(
                         color: Colors.grey[300],
                       ),
@@ -218,9 +182,15 @@ showCheckoutModal() {
                             ),
                             fixedSize: Size(300, 50)),
                         onPressed: () {
-                          // Handle checkout action
-                          Get.back();
-                          Get.snackbar('Success', 'Order Placed');
+                          print('placing order');
+
+                          if (_checkoutController.placeOrder()) {
+                            //print(_checkoutController.placeOrder());
+                            // Show success dialog and navigate
+                            onOrderSuccess();
+                          } else {
+                            onOrderFailure();
+                          }
                         },
                         child: Text(
                           'Place Order',
@@ -263,7 +233,10 @@ void _showPromoCodeDialog() {
         ElevatedButton(
           onPressed: () {
             String promoCode = promoCodeController.text.trim();
-            _checkoutController.promocodemethod(promoCode); // Apply promo code
+            _checkoutController.promocodemethod(promoCode);
+
+            _checkoutController.totalPrice(
+                cartController.orderTotal(), promoCode); // Apply promo code
             Get.back(); // Close the dialog
           },
           child: Text('Apply'),
@@ -283,24 +256,59 @@ void _showMethodsBottomSheet({
     Container(
       color: Colors.white,
       padding: EdgeInsets.only(top: 16, left: 16, right: 16, bottom: 25),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            title,
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 16),
-          ...methods.map((method) => ListTile(
-                title: Text(method),
-                onTap: () {
-                  onMethodSelected(
-                      method); // Call the callback with the selected method
-                  Get.back(); // Close the bottom sheet
-                },
-              )),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min, // Use minimum space
+          children: [
+            Text(
+              title,
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 16),
+            ...methods.map((method) => ListTile(
+                  title: Text(method),
+                  onTap: () {
+                    onMethodSelected(
+                        method); // Call the callback with the selected method
+                    Get.back(); // Close the bottom sheet
+                  },
+                )),
+          ],
+        ),
       ),
     ),
   );
 }
+
+// void _showMethodsBottomSheet({
+//   required String title, // Title of the bottom sheet
+//   required List<String> methods, // List of methods (delivery or payment)
+//   required Function(String)
+//       onMethodSelected, // Callback when a method is selected
+// }) {
+//   Get.bottomSheet(
+//     Container(
+//       color: Colors.white,
+//       padding: EdgeInsets.only(top: 16, left: 16, right: 16, bottom: 25),
+//       child: Column(
+//         mainAxisSize: MainAxisSize.min,
+//         children: [
+//           Text(
+//             title,
+//             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+//           ),
+//           SizedBox(height: 16),
+//           ...methods.map((method) => ListTile(
+//                 title: Text(method),
+//                 onTap: () {
+//                   onMethodSelected(
+//                       method); // Call the callback with the selected method
+//                   Get.back(); // Close the bottom sheet
+//                 },
+//               )),
+//         ],
+//       ),
+//     ),
+//   );
+
+// }
