@@ -1,6 +1,7 @@
 import 'package:deshi_mart/customs/categories.dart';
 import 'package:deshi_mart/customs/utils.dart';
 import 'package:deshi_mart/customs/widgets.dart';
+import 'package:deshi_mart/screens/checkout_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -48,6 +49,7 @@ class HomeScreen extends StatelessWidget {
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 InkWell(
+                  onTap: () => customDialog(),
                   child: Text(
                     'See more',
                     style: TextStyle(
